@@ -1,0 +1,37 @@
+digraph G {
+    label="RBT Insert [27]";
+    node [width=0.5,fontcolor=white,style=filled];
+    20 [fillcolor=black]
+    20 -> 10
+    20 -> 40
+    10 [fillcolor=red]
+    10 -> 4
+    10 -> 17
+    4 [fillcolor=black]
+    4 -> NULLl4
+    NULLl4 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+    4 -> NULLr4
+    NULLr4 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+    17 [fillcolor=black]
+    17 -> NULLl17
+    NULLl17 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+    17 -> NULLr17
+    NULLr17 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+    40 [fillcolor=red]
+    40 -> 35
+    40 -> 50
+    35 [fillcolor=black]
+    35 -> 27
+    35 -> NULLr35
+    NULLr35 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+    27 [fillcolor=red]
+    27 -> NULLl27
+    NULLl27 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+    27 -> NULLr27
+    NULLr27 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+    50 [fillcolor=black]
+    50 -> NULLl50
+    NULLl50 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+    50 -> NULLr50
+    NULLr50 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+}

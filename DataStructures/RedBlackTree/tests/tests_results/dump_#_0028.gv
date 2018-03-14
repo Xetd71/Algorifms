@@ -1,0 +1,9 @@
+digraph G {
+    label="Recolor 3 grandpa [1]";
+    node [width=0.5,fontcolor=white,style=filled];
+    30 [fillcolor=black]
+    30 -> NULLl30
+    NULLl30 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+    30 -> NULLr30
+    NULLr30 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+}

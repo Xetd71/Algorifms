@@ -1,0 +1,53 @@
+digraph G {
+    label="Rot Left [20]";
+    node [width=0.5,fontcolor=white,style=filled];
+    50 [fillcolor=black]
+    50 -> 40
+    50 -> 60
+    40 [fillcolor=black]
+    40 -> 35
+    40 -> 45
+    35 [fillcolor=black]
+    35 -> 21
+    35 -> 37
+    21 [fillcolor=black]
+    21 -> 20
+    21 -> 27
+    20 [fillcolor=red]
+    20 -> 17
+    20 -> NULLr20
+    NULLr20 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+    17 [fillcolor=black]
+    17 -> 10
+    17 -> NULLr17
+    NULLr17 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+    10 [fillcolor=black]
+    10 -> 4
+    10 -> NULLr10
+    NULLr10 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+    4 [fillcolor=black]
+    4 -> NULLl4
+    NULLl4 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+    4 -> NULLr4
+    NULLr4 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+    27 [fillcolor=red]
+    27 -> NULLl27
+    NULLl27 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+    27 -> NULLr27
+    NULLr27 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+    37 [fillcolor=red]
+    37 -> NULLl37
+    NULLl37 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+    37 -> NULLr37
+    NULLr37 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+    45 [fillcolor=red]
+    45 -> NULLl45
+    NULLl45 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+    45 -> NULLr45
+    NULLr45 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+    60 [fillcolor=red]
+    60 -> NULLl60
+    NULLl60 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+    60 -> NULLr60
+    NULLr60 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+}

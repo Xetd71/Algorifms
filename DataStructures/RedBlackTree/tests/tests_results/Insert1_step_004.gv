@@ -1,0 +1,24 @@
+digraph G {
+    node [width=0.5,fontcolor=white,style=filled];
+    10 [fillcolor=black]
+    10 -> 4
+    10 -> 40
+    4 [fillcolor=black]
+    4 -> NULLl4
+    NULLl4 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+    4 -> NULLr4
+    NULLr4 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+    40 [fillcolor=black]
+    40 -> 17
+    40 -> 50
+    17 [fillcolor=red]
+    17 -> NULLl17
+    NULLl17 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+    17 -> NULLr17
+    NULLr17 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+    50 [fillcolor=red]
+    50 -> NULLl50
+    NULLl50 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+    50 -> NULLr50
+    NULLr50 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+}

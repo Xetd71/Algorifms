@@ -1,0 +1,34 @@
+RBTree Event Log opened
+-----------------------
+Recolor 3 grandpa [4] #    0
+Recolor 3 grandpa [4] #    1
+Recolor 3 grandpa [60] #    2
+Recolor 3 grandpa [60] #    3
+Recolor 3 grandpa [17] #    4
+Rot Right [40] #    5
+Rot Left [20] #    6
+Recolor 3 grandpa [17] #    7
+Recolor 3 grandpa [45] #    8
+Recolor 3 grandpa [45] #    9
+Recolor 3 grandpa [17] #   10
+Recolor 3 grandpa [17] #   11
+Recolor 3 grandpa [37] #   12
+Recolor 3 grandpa [37] #   13
+Recolor 3 grandpa [21] #   14
+Recolor 3 grandpa [21] #   15
+Recolor 3 grandpa [27] #   16
+Recolor 3 grandpa [27] #   17
+Recolor 3 grandpa [45] #   18
+Recolor 3 grandpa [45] #   19
+Recolor 3 grandpa [60] #   20
+Rot Right [60] #   21
+Recolor 3 grandpa [60] #   22
+Recolor 3 grandpa [60] #   23
+Recolor 3 grandpa [60] #   24
+Recolor 3 grandpa [30] #   25
+Recolor 3 grandpa [30] #   26
+Recolor 3 grandpa [1] #   27
+Recolor 3 grandpa [1] #   28
+Recolor 3 grandpa [30] #   29
+-----------------------
+RBTree Event Log closed

@@ -1,0 +1,25 @@
+digraph G {
+    label="Recolor 3 grandpa [60]";
+    node [width=0.5,fontcolor=white,style=filled];
+    60 [fillcolor=black]
+    60 -> 21
+    60 -> 60
+    21 [fillcolor=red]
+    21 -> 1
+    21 -> 30
+    1 [fillcolor=black]
+    1 -> NULLl1
+    NULLl1 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+    1 -> NULLr1
+    NULLr1 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+    30 [fillcolor=black]
+    30 -> NULLl30
+    NULLl30 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+    30 -> NULLr30
+    NULLr30 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+    60 [fillcolor=black]
+    60 -> NULLl60
+    NULLl60 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+    60 -> NULLr60
+    NULLr60 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+}

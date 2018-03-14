@@ -1,0 +1,61 @@
+digraph G {
+    label="RBT Insert [30]";
+    node [width=0.5,fontcolor=white,style=filled];
+    20 [fillcolor=black]
+    20 -> 10
+    20 -> 40
+    10 [fillcolor=black]
+    10 -> 4
+    10 -> 17
+    4 [fillcolor=black]
+    4 -> 1
+    4 -> NULLr4
+    NULLr4 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+    1 [fillcolor=red]
+    1 -> NULLl1
+    NULLl1 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+    1 -> NULLr1
+    NULLr1 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+    17 [fillcolor=black]
+    17 -> NULLl17
+    NULLl17 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+    17 -> NULLr17
+    NULLr17 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+    40 [fillcolor=black]
+    40 -> 35
+    40 -> 50
+    35 [fillcolor=red]
+    35 -> 27
+    35 -> 37
+    27 [fillcolor=black]
+    27 -> 21
+    27 -> 30
+    21 [fillcolor=red]
+    21 -> NULLl21
+    NULLl21 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+    21 -> NULLr21
+    NULLr21 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+    30 [fillcolor=red]
+    30 -> NULLl30
+    NULLl30 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+    30 -> NULLr30
+    NULLr30 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+    37 [fillcolor=black]
+    37 -> NULLl37
+    NULLl37 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+    37 -> NULLr37
+    NULLr37 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+    50 [fillcolor=black]
+    50 -> 45
+    50 -> 60
+    45 [fillcolor=red]
+    45 -> NULLl45
+    NULLl45 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+    45 -> NULLr45
+    NULLr45 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+    60 [fillcolor=red]
+    60 -> NULLl60
+    NULLl60 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+    60 -> NULLr60
+    NULLr60 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+}

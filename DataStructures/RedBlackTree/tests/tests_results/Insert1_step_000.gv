@@ -1,0 +1,8 @@
+digraph G {
+    node [width=0.5,fontcolor=white,style=filled];
+    4 [fillcolor=black]
+    4 -> NULLl4
+    NULLl4 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+    4 -> NULLr4
+    NULLr4 [label="nil",width=0.3,height=0.2,shape=box,fillcolor=black]
+}
