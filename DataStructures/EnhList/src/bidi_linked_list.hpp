@@ -1,18 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////////
-/// \file
-/// \brief Contains pseudo-implementation part of bidirectional list structure 
-/// template declared in the file's h-counterpart
-///
-/// © Sergey Shershakov 2015–2017.
-///
-/// This code is for educational purposes of the course "Algorithms and Data 
-/// Structures" provided by the School of Software Engineering of the Faculty 
-/// of Computer Science at the Higher School of Economics.
-///
-/// When altering code, a copyright line must be preserved.
-///////////////////////////////////////////////////////////////////////////////
-
-#include <stdexcept>
+﻿#include <stdexcept>
 #include <algorithm>    //swap
 
 
@@ -21,9 +7,8 @@
 //==============================================================================
 
 
-template <typename T>
-typename BidiLinkedList<T>::Node* 
-    BidiLinkedList<T>::Node::insertAfterInternal(Node* insNode)
+template<typename T>
+typename BidiLinkedList<T>::Node *BidiLinkedList<T>::Node::insertAfterInternal(Node *insNode)
 {
     insertAfterInternal(insNode, insNode);
 
@@ -31,10 +16,10 @@ typename BidiLinkedList<T>::Node*
 }
 
 
-template <typename T>
-void BidiLinkedList<T>::Node::insertAfterInternal(Node* beg, Node* end)
+template<typename T>
+void BidiLinkedList<T>::Node::insertAfterInternal(Node *beg, Node *end)
 {
-    Node* afterNode = this->_next;              // запоминаем узел, после которого вставлем insNode
+    Node *afterNode = this->_next;              // запоминаем узел, после которого вставлем insNode
 
     this->_next = beg;                          // соединяем this с beg
     if(beg != nullptr)
@@ -49,15 +34,15 @@ void BidiLinkedList<T>::Node::insertAfterInternal(Node* beg, Node* end)
 // class BidiList<T>
 //==============================================================================
 
-template <typename T>
-BidiLinkedList<T>::BidiLinkedList(const BidiLinkedList<T>& obj)
+template<typename T>
+BidiLinkedList<T>::BidiLinkedList(const BidiLinkedList<T> &obj)
 {
     _head = nullptr;                        //
     _tail = nullptr;                        // задаем нулевыми значениями
 
     std::size_t size = 0;
     // добавляем элементы в список, в процессе подсчитывая размер
-    for(Node* cNode = obj._head; cNode != nullptr; cNode = cNode->_next) {
+    for(Node *cNode = obj._head; cNode != nullptr; cNode = cNode->_next) {
         appendEl(cNode->_val);
         size++;
     }
@@ -65,8 +50,8 @@ BidiLinkedList<T>::BidiLinkedList(const BidiLinkedList<T>& obj)
 }
 
 
-template <typename T>
-BidiLinkedList<T>& BidiLinkedList<T>::operator=(const BidiLinkedList<T>& obj)
+template<typename T>
+BidiLinkedList<T> &BidiLinkedList<T>::operator=(const BidiLinkedList<T> &obj)
 {
     BidiLinkedList<T> temp(obj);            // создаем копию obj
     swap(*this, temp);                      // меняем содержимое temp и *this
@@ -75,27 +60,28 @@ BidiLinkedList<T>& BidiLinkedList<T>::operator=(const BidiLinkedList<T>& obj)
 }
 
 
-template <typename T>
-void swap(BidiLinkedList<T>& first, BidiLinkedList<T>& second)
+template<typename T>
+void swap(BidiLinkedList<T> &first, BidiLinkedList<T> &second)
 {
     std::swap(first._head, second._head);           // меняем _head местами
     std::swap(first._tail, second._tail);           // меняем _tail местами
-    std::swap(first._size, second._size);           // меняем _size местами (не бессмыссленная операция если хотябы один из _size задан)
+    std::swap(first._size,
+              second._size);           // меняем _size местами (не бессмыссленная операция если хотябы один из _size задан)
 }
 
 
-template <typename T>
+template<typename T>
 BidiLinkedList<T>::~BidiLinkedList()
 {
     clear();                // очищаем содержимое BidiLinkedList
 }
 
 
-template <typename T>
+template<typename T>
 void BidiLinkedList<T>::clear()
 {
-    Node* nextNode;
-    for(Node* node = _head; node != nullptr; node = nextNode) {     // очищаем BidiLinkedList
+    Node *nextNode;
+    for(Node *node = _head; node != nullptr; node = nextNode) {     // очищаем BidiLinkedList
         nextNode = node->_next;
         delete node;
     }
@@ -105,58 +91,56 @@ void BidiLinkedList<T>::clear()
     _size = NO_SIZE;                // задаем полям "нулевые" значения
 }
 
-template <typename T>
+template<typename T>
 size_t BidiLinkedList<T>::getSize()
 {
-    if (_size == NO_SIZE)           // считаем размер списка, если это требуется
+    if(_size == NO_SIZE)           // считаем размер списка, если это требуется
         calculateSize();
 
     return _size;                   // возвращаем размер списка
 }
 
 
-template <typename T>
+template<typename T>
 void BidiLinkedList<T>::calculateSize()
 {
     _size = 0;
-    for(Node* node = _head; node != nullptr; node = node->_next)
+    for(Node *node = _head; node != nullptr; node = node->_next)
         _size++;
 }
 
 
-template <typename T>
-typename BidiLinkedList<T>::Node* 
-    BidiLinkedList<T>::getLastNode() const
+template<typename T>
+typename BidiLinkedList<T>::Node *BidiLinkedList<T>::getLastNode() const
 {
     return _tail;                               // последний элемент в списке
 }
 
 
-template <typename T>
-typename BidiLinkedList<T>::Node*
-    BidiLinkedList<T>::appendEl(const T& val)
+template<typename T>
+typename BidiLinkedList<T>::Node *BidiLinkedList<T>::appendEl(const T &val)
 {
-    Node* newNode = new Node(val);
+    Node *newNode = new Node(val);
 
     insertNodeAfter(getLastNode(), newNode);     // вставляем newNode в конец
 
-    return  newNode;
+    return newNode;
 }
 
 
 // возможно, этот метод даже не надо изменять
-template <typename T>
-typename BidiLinkedList<T>::Node* 
-    BidiLinkedList<T>::insertNodeAfter(Node* node, Node* insNode)
+template<typename T>
+typename BidiLinkedList<T>::Node *BidiLinkedList<T>::insertNodeAfter(Node *node, Node *insNode)
 {
-    insertNodesAfter(node, insNode, insNode);       // вставляем в список элементы с insNode по insNode (вставляем insNode)
+    insertNodesAfter(node, insNode,
+                     insNode);       // вставляем в список элементы с insNode по insNode (вставляем insNode)
 
     return insNode;
 }
 
 
 template<typename T>
-void BidiLinkedList<T>::insertNodesAfter(Node* node, Node* beg, Node* end)
+void BidiLinkedList<T>::insertNodesAfter(Node *node, Node *beg, Node *end)
 {
     // проверка того, что переданные ноды не nullptr
     if(beg == nullptr || end == nullptr)
@@ -190,9 +174,8 @@ void BidiLinkedList<T>::insertNodesAfter(Node* node, Node* beg, Node* end)
 #ifdef IWANNAGET10POINTS
 
 
-template <typename T>
-typename BidiLinkedList<T>::Node*
-    BidiLinkedList<T>::insertNodeBefore(Node* node, Node* insNode)
+template<typename T>
+typename BidiLinkedList<T>::Node *BidiLinkedList<T>::insertNodeBefore(Node *node, Node *insNode)
 {
     insertNodesBefore(node, insNode, insNode);
 
@@ -200,8 +183,8 @@ typename BidiLinkedList<T>::Node*
 }
 
 
-template <typename T>
-void BidiLinkedList<T>::insertNodesBefore(Node* node, Node* beg, Node* end)
+template<typename T>
+void BidiLinkedList<T>::insertNodesBefore(Node *node, Node *beg, Node *end)
 {
     if(node == nullptr || node == _head) {
         if(_head != nullptr) {                  // Вставляем цепочку перед _head
@@ -221,14 +204,15 @@ void BidiLinkedList<T>::insertNodesBefore(Node* node, Node* beg, Node* end)
 #endif // IWANNAGET10POINTS
 
 
-template <typename T>
-void BidiLinkedList<T>::cutNodes(Node* beg, Node* end)
+template<typename T>
+void BidiLinkedList<T>::cutNodes(Node *beg, Node *end)
 {
-    if (beg == nullptr || end == nullptr)                       // проверка, что вырезаемые элементы не nullptr
+    if(beg == nullptr || end == nullptr)                       // проверка, что вырезаемые элементы не nullptr
         throw std::invalid_argument("Cut node is nullptr");
 
     if(_head == beg) {
-        if(end->_next != nullptr)                   // удаляем ссылку на предыдущий элемент у будущего head, если это возможно
+        if(end->_next !=
+           nullptr)                   // удаляем ссылку на предыдущий элемент у будущего head, если это возможно
             end->_next->_prev = nullptr;
 
         _head = end->_next;                         // вырезаем элементы
@@ -250,9 +234,8 @@ void BidiLinkedList<T>::cutNodes(Node* beg, Node* end)
 }
 
 
-template <typename T>
-typename BidiLinkedList<T>::Node* 
-    BidiLinkedList<T>::cutNode(Node* node)
+template<typename T>
+typename BidiLinkedList<T>::Node *BidiLinkedList<T>::cutNode(Node *node)
 {
     cutNodes(node, node);                       // Вырезаем из листа элементы с node по node (вырезаем элемент node)
 
@@ -260,16 +243,15 @@ typename BidiLinkedList<T>::Node*
 }
 
 
-template <typename T>
-typename BidiLinkedList<T>::Node* 
-    BidiLinkedList<T>::findFirst(Node* startFrom, const T& val)
+template<typename T>
+typename BidiLinkedList<T>::Node *BidiLinkedList<T>::findFirst(Node *startFrom, const T &val)
 {
     // Если startFrom, то возвращаем nullptr
-    if (startFrom == nullptr)
+    if(startFrom == nullptr)
         return nullptr;
 
     // находим и возвращаем элемент со значением val
-    for(Node* cNode = startFrom; cNode != nullptr; cNode = cNode->_next)
+    for(Node *cNode = startFrom; cNode != nullptr; cNode = cNode->_next)
         if(cNode->_val == val)
             return cNode;
 
@@ -277,16 +259,15 @@ typename BidiLinkedList<T>::Node*
 }
 
 
-template <typename T>
-typename BidiLinkedList<T>::Node*
-BidiLinkedList<T>::findLast(Node* startFrom, const T& val)
+template<typename T>
+typename BidiLinkedList<T>::Node *BidiLinkedList<T>::findLast(Node *startFrom, const T &val)
 {
     // Если startFrom, то возвращаем nullptr
-    if (startFrom == nullptr)
+    if(startFrom == nullptr)
         return nullptr;
 
     // находим и возвращаем элемент со значением val
-    for(Node* cNode = startFrom; cNode != nullptr; cNode = cNode->_prev)
+    for(Node *cNode = startFrom; cNode != nullptr; cNode = cNode->_prev)
         if(cNode->_val == val)
             return cNode;
 
@@ -294,19 +275,17 @@ BidiLinkedList<T>::findLast(Node* startFrom, const T& val)
 }
 
 
-
-template <typename T>
-typename BidiLinkedList<T>::Node** 
-    BidiLinkedList<T>::findAll(Node* startFrom, const T& val, int& size)
+template<typename T>
+typename BidiLinkedList<T>::Node **BidiLinkedList<T>::findAll(Node *startFrom, const T &val, int &size)
 {
-    if (!startFrom)
+    if(!startFrom)
         return nullptr;
 
     size = 0;
     // список с найденными элементыми, у которых значение равно val
-    BidiLinkedList<Node*> listOfFoundNodes;
+    BidiLinkedList<Node *> listOfFoundNodes;
     // находим все элементы списка со значениеми val и добавляем их в список listOfFoundNodes
-    for(Node* cNode = startFrom; cNode != nullptr; cNode = cNode->_next) {
+    for(Node *cNode = startFrom; cNode != nullptr; cNode = cNode->_next) {
         if(cNode->_val == val) {
             size++;
             listOfFoundNodes.appendEl(cNode);
@@ -318,8 +297,8 @@ typename BidiLinkedList<T>::Node**
         return nullptr;
 
     // массив с найденными элементами
-    Node** res = new Node*[size];
-    typename BidiLinkedList<Node*>::Node* cNode = listOfFoundNodes.getHeadNode();
+    Node **res = new Node *[size];
+    typename BidiLinkedList<Node *>::Node *cNode = listOfFoundNodes.getHeadNode();
     // копируем элементы из листа listOfFoundNodes в возвращаемый массив
     for(int i = 0; i < size; ++i) {
         res[i] = cNode->getValue();
@@ -333,12 +312,11 @@ typename BidiLinkedList<T>::Node**
 // макрос IWANNAGET10POINTS, взяв тем самым на себя повышенные обязательства
 #ifdef IWANNAGET10POINTS
 
-template <typename T>
-typename BidiLinkedList<T>::Node**  
-BidiLinkedList<T>::cutAll(Node* startFrom, const T& val, int& size)
+template<typename T>
+typename BidiLinkedList<T>::Node **BidiLinkedList<T>::cutAll(Node *startFrom, const T &val, int &size)
 {
     // находим элементы со значением val  списке
-    Node** foundNodes = findAll(startFrom, val, size);
+    Node **foundNodes = findAll(startFrom, val, size);
 
     // вырезаем найденные элементы из списка
     for(int i = 0; i < size; ++i)

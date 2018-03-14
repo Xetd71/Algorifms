@@ -1,18 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////////
-/// \file
-/// \brief Contains interface part of the bidirectional list structure template.
-///
-/// © Sergey Shershakov 2015–2017.
-///
-/// This code is for educational purposes of the course "Algorithms and Data 
-/// Structures" provided by the School of Software Engineering of the Faculty 
-/// of Computer Science at the Higher School of Economics.
-///
-/// When altering code, a copyright line must be preserved.
-///////////////////////////////////////////////////////////////////////////////
-
-
-#define IWANNAGET10POINTS
+﻿#define IWANNAGET10POINTS
 
 #ifndef XI_ENHLINKEDLIST_BIDILIST_H_
 #define XI_ENHLINKEDLIST_BIDILIST_H_
@@ -24,11 +10,11 @@
 
 //#include <vector>
 
-template <typename T>
+template<typename T>
 class BidiLinkedList;
 
-template <typename T>
-void swap(BidiLinkedList<T>& first, BidiLinkedList<T>& second);
+template<typename T>
+void swap(BidiLinkedList<T> &first, BidiLinkedList<T> &second);
 
 
 /** \brief Declares a generic purpose bidirectional list
@@ -40,13 +26,12 @@ void swap(BidiLinkedList<T>& first, BidiLinkedList<T>& second);
  *  *   `T` should be default constructable
  *  *   `T` should be copyable
  */
-template <typename T>
-class BidiLinkedList 
-{
+template<typename T>
+class BidiLinkedList {
 public:
     //-----<Consts>------
     /** \brief Determines a value for case when a size has not been still calculated */
-    static const std::size_t NO_SIZE = (std::size_t) - 1;
+    static const std::size_t NO_SIZE = (std::size_t) -1;
 
 
 public:
@@ -62,59 +47,59 @@ public:
      *
      *  *    `template <typename T> typename BidiList<T>::Node* BidiList<T>::getLastNode() const`
      */
-    class Node 
-    {
+    class Node {
         /** \brief Declare a Bidilist as a friend class to allow it to have access to 
          *  Node's private members. 
          */
         friend class BidiLinkedList;
+
     public:
         /** \brief Default constructor */
         Node() : _next(nullptr), _prev(nullptr) {}
 
         /** \brief Inititalization wit a node element */
-        Node(const T& el) : _next(nullptr), _prev(nullptr), _val(el) {}
+        Node(const T &el) : _next(nullptr), _prev(nullptr), _val(el) {}
 
     public:
         /** \brief Returns a pointer to a previous element */
-        Node* getPrev() const { return _prev;  }
+        Node *getPrev() const { return _prev; }
 
         /** \brief Returns a pointer to a next element */
-        Node* getNext() const { return _next; }
+        Node *getNext() const { return _next; }
 
         /** \brief Returns node's value */
-        T& getValue() { return _val;  }
+        T &getValue() { return _val; }
 
         /** \brief const overloaded verson of getValue() */
-        const T& getValue() const { return _val; }
+        const T &getValue() const { return _val; }
 
         /** \brief Sets a new value carried by the node */
-        void setValue(const T& newVal) { _val = newVal; }
-        
+        void setValue(const T &newVal) { _val = newVal; }
+
     public:
-        
+
         // UPD: unfortunately, can't proclaim this methos due to encapsulation reqs
         ///** \brief Sets a given node \a insNode as the next node ather this
         // *  \param insNode a new node ot be after this
         // *  \return inserted node
         // */
         //Node* insertAfter(Node* insNode);
-    
+
     protected:
-        
+
         /** \brief Internal implementation of insertAfter() w/o any checkings 
          *
          *  <b style='color:orange'>Must be implemented by students</b>
          */
-        Node* insertAfterInternal(Node* insNode);
+        Node *insertAfterInternal(Node *insNode);
 
         /** \brief Internal implementation of insertAfter() */
-        void insertAfterInternal(Node* beg, Node* end);
+        void insertAfterInternal(Node *beg, Node *end);
 
     protected:
         T _val;                 ///< Storage a value
-        Node* _next;            ///< Next element. nullptr, if no one presented
-        Node* _prev;            ///< Previous element. nullptr, if no one presented
+        Node *_next;            ///< Next element. nullptr, if no one presented
+        Node *_prev;            ///< Previous element. nullptr, if no one presented
     }; // class Node<T> 
 
 
@@ -122,21 +107,20 @@ public:
 public:
 
 
-    class iterator
-    {
+    class iterator {
     public:
 
         /** \brief Default constructor */
         iterator() : curNode() {}
 
         /** \brief Inititalization wit a node element */
-        explicit iterator(typename BidiLinkedList<T>::Node* current) : curNode(current) {}
+        explicit iterator(typename BidiLinkedList<T>::Node *current) : curNode(current) {}
 
         /** \brief Copy constructor */
-        iterator(const iterator& obj) : curNode(obj.curNode) {}
+        iterator(const iterator &obj) : curNode(obj.curNode) {}
 
         /** \brief operator = */
-        iterator& operator=(const iterator& obj)
+        iterator &operator=(const iterator &obj)
         {
             iterator temp(obj);                   // создаем копию obj
             swap(*this, temp);                                      // меняем содержимое temp и *this
@@ -147,7 +131,7 @@ public:
     public:
 
         /** \brief operator* */
-        T& operator*() const
+        T &operator*() const
         {
             if(curNode == nullptr)
                 throw std::invalid_argument("Current node is nullptr");
@@ -156,7 +140,7 @@ public:
         }
 
         /** \brief operator-> */
-        T* operator->() const
+        T *operator->() const
         {
             if(curNode == nullptr)
                 throw std::invalid_argument("Current node is nullptr");
@@ -165,7 +149,7 @@ public:
         }
 
         /** \brief is equals operator */
-        bool operator==(const iterator& it) const
+        bool operator==(const iterator &it) const
         {
             if(curNode == nullptr || it.curNode == nullptr)
                 throw std::invalid_argument("One of the compared iterators refers to nullptr");
@@ -174,7 +158,7 @@ public:
         }
 
         /** \brief is unequals operator */
-        bool operator!=(const iterator& it) const
+        bool operator!=(const iterator &it) const
         {
             if(curNode == nullptr || it.curNode == nullptr)
                 throw std::invalid_argument("One of the compared iterators refers to nullptr");
@@ -184,13 +168,13 @@ public:
 
 
         /** \brief Swap first's content with second's content */
-        friend void swap(iterator& first, iterator& second)
+        friend void swap(iterator &first, iterator &second)
         {
             std::swap(first.curNode, second.curNode);
         }
 
         /** \brief prefix operator ++ */
-        iterator& operator++()
+        iterator &operator++()
         {
             if(curNode == nullptr)
                 throw std::invalid_argument("Iterator refer to nullptr");
@@ -208,7 +192,7 @@ public:
         }
 
         /** \brief prefix operator -- */
-        iterator& operator--()
+        iterator &operator--()
         {
             if(curNode == nullptr)
                 throw std::invalid_argument("Iterator refer to nullptr");
@@ -228,7 +212,7 @@ public:
 
     public:
 
-        typename BidiLinkedList<T>::Node* curNode;         ///< Current node
+        typename BidiLinkedList<T>::Node *curNode;         ///< Current node
     };
 
 
@@ -241,16 +225,17 @@ public:
     BidiLinkedList() : _head(nullptr), _tail(nullptr), _size(NO_SIZE) {};
 
     /** \brief Copy constructor */
-    BidiLinkedList(const BidiLinkedList<T>& obj);
+    BidiLinkedList(const BidiLinkedList<T> &obj);
 
     /** \brief operator = */
-    BidiLinkedList<T>& operator=(const BidiLinkedList<T>& obj);
+    BidiLinkedList<T> &operator=(const BidiLinkedList<T> &obj);
 
     /** \brief Destructor
      *
      *  <b style='color:orange'>Must be implemented by students</b>
      */
     ~BidiLinkedList();
+
 public:
 
     /** \brief Clears the list (deletes all elements and frees memory) 
@@ -265,7 +250,7 @@ public:
      *
      *  <b style='color:orange'>Must be implemented by students</b>
      */
-    Node* appendEl(const T& val);
+    Node *appendEl(const T &val);
 
     /** \brief Inserts a given new (free) node \a insNode after node \a node
      *  \param node a node after which \a insNode is inserted
@@ -278,7 +263,7 @@ public:
      *
      *  <b style='color:orange'>Must be implemented by students</b>
      */
-    Node* insertNodeAfter(Node* node, Node* insNode);
+    Node *insertNodeAfter(Node *node, Node *insNode);
 
 
     /** \brief Inserts a free chain given by its begin and end node after the given node.
@@ -294,10 +279,11 @@ public:
      *
      *  If \a node is nullptr, the chain is inserted in the very end of the list
      */
-    void insertNodesAfter(Node* node, Node* beg, Node* end);
+    void insertNodesAfter(Node *node, Node *beg, Node *end);
 
- // this part of code is active only if you'd like to get the highest mark
+    // this part of code is active only if you'd like to get the highest mark
 #ifdef IWANNAGET10POINTS
+
     /** \brief Inserts a given new node \a insNode before node \a node
      *  \param node a node before which \a insNode is inserted
      *  \param insNode inserted node
@@ -308,8 +294,8 @@ public:
      *  If \a insNode is nullptr, an expection is raised
      *
      *  <b style='color:orange'>Must be implemented by students</b>
-     */    
-    Node* insertNodeBefore(Node* node, Node* insNode);
+     */
+    Node *insertNodeBefore(Node *node, Node *insNode);
 
     /** \brief Inserts a free chain given by its begin and end node before the given node.
      *  \param beg begin node of the inserted chain
@@ -325,7 +311,7 @@ public:
      *  If \a node is nullptr, the chain is inserted in the very begin of the list
      *  If \a insNode has a previous or next sibling, an exception is thrown.
      */
-    void insertNodesBefore(Node* node, Node* beg, Node* end);
+    void insertNodesBefore(Node *node, Node *beg, Node *end);
 
 #endif // IWANNAGET10POINTS
 
@@ -339,8 +325,7 @@ public:
      *
      *  <b style='color:orange'>Must be implemented by students</b>
      */
-    void cutNodes(Node* beg, Node* end);
-
+    void cutNodes(Node *beg, Node *end);
 
 
     /** \brief Cuts a given node from the list
@@ -353,7 +338,8 @@ public:
      *
      *  <b style='color:orange'>Must be implemented by students</b>
      */
-    Node* cutNode(Node* node);
+    Node *cutNode(Node *node);
+
 public:
 
     /** \brief Finds first node carrying a given value \a val and returns it
@@ -363,7 +349,7 @@ public:
      *  
      *  <b style='color:orange'>Must be implemented by students</b>
      */
-    Node* findFirst(const T& val) { return findFirst(_head, val); };
+    Node *findFirst(const T &val) { return findFirst(_head, val); };
 
     /** \brief Finds first node carrying a given value \a val, starting from a given 
      *  node \a startFrom, and returns it
@@ -377,7 +363,7 @@ public:
      *
      *  <b style='color:orange'>Must be implemented by students</b>
      */
-    Node* findFirst(Node* startFrom, const T& val);
+    Node *findFirst(Node *startFrom, const T &val);
 
     /** \brief Finds last node carrying a given value \a val and returns it
      *  \param val value to search for
@@ -385,7 +371,7 @@ public:
      *  returns nullptr
      *
      */
-    Node* findLast(const T& val) { return findLast(_tail, val); };
+    Node *findLast(const T &val) { return findLast(_tail, val); };
 
     /** \brief Finds last node carrying a given value \a val, starting from a given
      *  node \a startFrom, and returns it
@@ -399,7 +385,7 @@ public:
      *
      *  <b style='color:orange'>Must be implemented by students</b>
      */
-    Node* findLast(Node* startFrom, const T& val);
+    Node *findLast(Node *startFrom, const T &val);
 
     /** \brief Find all occurences of a value \a val and returns a C-style array with
      *  non-free pointers to a nodes of **this list**.
@@ -415,25 +401,25 @@ public:
      *
      *  <b style='color:orange'>Must be implemented by students</b>
      */
-    Node** findAll(Node* startFrom, const T& val, int& size);
+    Node **findAll(Node *startFrom, const T &val, int &size);
 
     /** \brief Overloaded version of findAll(): searching in the entire list */
-    Node** findAll(const T& val, int& size) { return findAll(_head, val, size); };
+    Node **findAll(const T &val, int &size) { return findAll(_head, val, size); };
 
     /** \brief Looking for a node with value \a val and cuts it from the list. 
      *  \param cutted node if found, nullptr otherwise
      */
-    Node* cutFirst(Node* startFrom, const T& val)
+    Node *cutFirst(Node *startFrom, const T &val)
     {
-        Node* res = findFirst(startFrom, val);
-        if (res)
+        Node *res = findFirst(startFrom, val);
+        if(res)
             return cutNode(res);
-        
+
         return nullptr;
     }
 
     /** \brief Cuts first node with the given value \a val */
-    Node* cutFirst(const T& val) { return cutFirst(_head, val); }
+    Node *cutFirst(const T &val) { return cutFirst(_head, val); }
 
     // this part of code is active only if you'd like to get the highest mark
 #ifdef IWANNAGET10POINTS
@@ -445,15 +431,15 @@ public:
      *
      *  <b style='color:orange'>Must be implemented by students</b>
      */
-    Node** cutAll(Node* startFrom, const T& val, int& size);
+    Node **cutAll(Node *startFrom, const T &val, int &size);
 
     /** \brief Overloaded version of cutAll(): searching in the entire list */
-    Node** cutAll(const T& val, int& size) { return cutAll(_head, val, size); };
+    Node **cutAll(const T &val, int &size) { return cutAll(_head, val, size); };
 
 #endif // IWANNAGET10POINTS
 
     /** \brief Swap first's content with second's content */
-    friend void swap<T>(BidiLinkedList<T>& first, BidiLinkedList<T>& second);
+    friend void swap<T>(BidiLinkedList<T> &first, BidiLinkedList<T> &second);
 
     /** \brief Returns iterator which is at the beginning of the bibiList */
     iterator begin() { return iterator(getHeadNode()); }
@@ -463,7 +449,7 @@ public:
 
 public:
     /** \brief Returns a lists's head */
-    Node* getHeadNode() const { return _head; }
+    Node *getHeadNode() const { return _head; }
 
     /** \brief Returns a pointer to a last node
      *
@@ -471,10 +457,11 @@ public:
      *
      *  <b style='color:orange'>Must be implemented by students</b>
      */
-    Node* getLastNode() const;
-    
+    Node *getLastNode() const;
+
     /** \brief Returns a size of a list that is equal to a number of storing elements */
     std::size_t getSize();
+
 protected:
     /** \brief Method invalidate size cache value until it is calculated again. 
      *  Should be invoked every time a structure of the list is changed
@@ -486,15 +473,16 @@ protected:
      *  <b style='color:orange'>Must be implemented by students</b>
      */
     void calculateSize();
+
 protected:
     /** \brief Pointer to a first element of a list
      *
      *  Since we have both direct and reverse links, we need no more to store inconvenient prehead
      */
-    Node* _head;
+    Node *_head;
 
     /** \brief Pointer to a last element of a list */
-    Node* _tail;
+    Node *_tail;
 
     /** \brief Caches a size of a list. If no size has been calculated, stores NO_SIZE value */
     std::size_t _size;
