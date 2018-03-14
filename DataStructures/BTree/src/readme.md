@@ -1,0 +1,1 @@
+Directory for sources. The structure corresponds to a system of enclosed namespaces.
