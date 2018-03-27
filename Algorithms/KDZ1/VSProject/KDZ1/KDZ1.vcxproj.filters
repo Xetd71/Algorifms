@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{9e025337-2ba8-4ab3-aeb1-ffd185719491}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\TableEncoders">
+      <UniqueIdentifier>{6a38f4b0-4f8b-4365-8a85-c55611e7f049}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\TableEncoders\Huffman">
+      <UniqueIdentifier>{caca381f-ab46-46fd-b318-95c275984a75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\TableEncoders\Fano">
+      <UniqueIdentifier>{c862b703-ef5e-4d3a-aaf0-ff145bc74070}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\LZ77">
+      <UniqueIdentifier>{8374f02a-a09c-44c5-81ac-35447a6f545b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\timing.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\TableEncoders\TableEncoder.cpp">
+      <Filter>src\TableEncoders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\TableEncoders\Huffman\HuffmanEncoder.cpp">
+      <Filter>src\TableEncoders\Huffman</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\TableEncoders\Fano\FanoEncoder.cpp">
+      <Filter>src\TableEncoders\Fano</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\LZ77\LZ77Encoder.cpp">
+      <Filter>src\LZ77</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\FileEncoder.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\TableEncoders\TableEncoder.h">
+      <Filter>src\TableEncoders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\TableEncoders\Huffman\HuffmanEncoder.h">
+      <Filter>src\TableEncoders\Huffman</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\TableEncoders\Fano\FanoEncoder.h">
+      <Filter>src\TableEncoders\Fano</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\LZ77\LZ77Encoder.h">
+      <Filter>src\LZ77</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
