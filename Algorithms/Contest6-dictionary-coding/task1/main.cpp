@@ -33,9 +33,9 @@ int main(int argc, const char* argv[])
     //Здесь предлагается задать размер окна в байтах (отдельно буфера предыстории и предпросмотра)
     //В сумме должны образовывать столько, сколько надо в задании
     //history buffer 3 kb
-    int histBufMax = 12;
+    int histBufMax = 4 * 1024;
     //preview buffer 1 kb
-    int prevBufMax = 4;
+    int prevBufMax = 5 * 1024;
 
     ReadWriter rw;
     string s = "";
